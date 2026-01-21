@@ -1,0 +1,561 @@
+<!DOCTYPE html>
+<html lang="ja">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Security & Chauffeur Service | Prototype</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;600&family=Noto+Serif+JP:wght@300;500&family=Lato:wght@300;400&display=swap"
+        rel="stylesheet">
+    <style>
+        :root {
+            --color-bg: #0a0a0a;
+            --color-text-main: #f0f0f0;
+            --color-text-sub: #a0a0a0;
+            --color-accent: #c5a059;
+            /* Gold */
+            --color-accent-dark: #8a6e30;
+            --font-jp: 'Noto Serif JP', serif;
+            --font-en: 'Cinzel', serif;
+            --font-body: 'Lato', sans-serif;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            background-color: var(--color-bg);
+            color: var(--color-text-main);
+            font-family: var(--font-body);
+            overflow-x: hidden;
+            scroll-behavior: smooth;
+        }
+
+        /* --- Global Utilities --- */
+        .container {
+            width: 100%;
+            position: relative;
+        }
+
+        .gold-border-btn {
+            display: inline-block;
+            padding: 12px 32px;
+            border: 1px solid var(--color-accent);
+            color: var(--color-text-main);
+            text-decoration: none;
+            font-family: var(--font-en);
+            font-size: 0.9rem;
+            letter-spacing: 0.15em;
+            transition: all 0.4s ease;
+            background: rgba(10, 10, 10, 0.3);
+            backdrop-filter: blur(2px);
+            cursor: pointer;
+        }
+
+        .gold-border-btn:hover {
+            background: var(--color-accent);
+            color: #000;
+        }
+
+        /* --- Section Utilities --- */
+        section {
+            padding: 100px 5%;
+        }
+
+        .section-title {
+            font-family: var(--font-en);
+            font-size: 2rem;
+            text-align: center;
+            margin-bottom: 60px;
+            color: var(--color-accent);
+            letter-spacing: 0.2em;
+        }
+
+        .section-title span {
+            display: block;
+            font-family: var(--font-jp);
+            font-size: 1rem;
+            color: var(--color-text-sub);
+            margin-top: 15px;
+            letter-spacing: 0.1em;
+        }
+
+        /* --- Header --- */
+        header {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            padding: 20px 5%;
+            z-index: 1000;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            background: rgba(10, 10, 10, 0.8);
+            backdrop-filter: blur(10px);
+            border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+        }
+
+        .logo {
+            font-family: var(--font-en);
+            font-size: 1.5rem;
+            font-weight: 600;
+            color: var(--color-text-main);
+            letter-spacing: 0.1em;
+        }
+
+        .logo span {
+            color: var(--color-accent);
+        }
+
+        nav ul {
+            display: flex;
+            list-style: none;
+            gap: 40px;
+        }
+
+        nav a {
+            color: var(--color-text-main);
+            text-decoration: none;
+            font-family: var(--font-en);
+            font-size: 0.85rem;
+            letter-spacing: 0.1em;
+            opacity: 0.8;
+            transition: opacity 0.3s;
+        }
+
+        nav a:hover {
+            opacity: 1;
+            color: var(--color-accent);
+        }
+
+        /* --- Hero Section --- */
+        .hero {
+            width: 100%;
+            height: 100vh;
+            background-image: url('file:///C:/Users/user/.gemini/antigravity/brain/15b7921e-8a96-4153-8db1-564f34a72873/luxury_security_car_hero_1768944835229.png');
+            background-size: cover;
+            background-position: center;
+            position: relative;
+            padding: 0;
+        }
+
+        .hero-overlay {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(to bottom,
+                    rgba(10, 10, 10, 0.4) 0%,
+                    rgba(10, 10, 10, 0.2) 50%,
+                    rgba(10, 10, 10, 0.7) 100%);
+        }
+
+        .hero-content {
+            position: absolute;
+            top: 50%;
+            left: 10%;
+            transform: translateY(-50%);
+            z-index: 10;
+        }
+
+        .hero-title-en {
+            font-family: var(--font-en);
+            font-size: 1rem;
+            letter-spacing: 0.3em;
+            color: var(--color-accent);
+            margin-bottom: 24px;
+            display: block;
+            text-transform: uppercase;
+        }
+
+        .hero-title-jp {
+            font-family: var(--font-jp);
+            font-weight: 500;
+            font-size: 3.5rem;
+            line-height: 1.6;
+            margin-bottom: 40px;
+        }
+
+        .hero-sub {
+            font-family: var(--font-jp);
+            font-size: 1rem;
+            color: var(--color-text-sub);
+            letter-spacing: 0.1em;
+            margin-bottom: 40px;
+            max-width: 500px;
+            line-height: 2;
+        }
+
+        .bottom-bar {
+            position: absolute;
+            bottom: 40px;
+            right: 5%;
+            z-index: 10;
+            text-align: right;
+        }
+
+        .confidentiality {
+            font-family: var(--font-en);
+            font-size: 0.75rem;
+            letter-spacing: 0.2em;
+            color: rgba(255, 255, 255, 0.6);
+            display: flex;
+            align-items: center;
+            justify-content: flex-end;
+            gap: 10px;
+        }
+
+        .confidentiality::before {
+            content: '';
+            display: block;
+            width: 40px;
+            height: 1px;
+            background-color: var(--color-accent);
+            opacity: 0.7;
+        }
+
+        /* --- Scroll Indicator --- */
+        .scroll-indicator {
+            position: absolute;
+            bottom: 30px;
+            left: 50%;
+            transform: translateX(-50%);
+            z-index: 10;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            gap: 8px;
+            opacity: 0.7;
+        }
+
+        .mouse {
+            width: 20px;
+            height: 32px;
+            border: 1px solid #fff;
+            border-radius: 12px;
+            position: relative;
+        }
+
+        .wheel {
+            width: 2px;
+            height: 6px;
+            background: #fff;
+            position: absolute;
+            top: 6px;
+            left: 50%;
+            transform: translateX(-50%);
+            animation: scroll 1.5s infinite;
+        }
+
+        @keyframes scroll {
+            0% {
+                top: 6px;
+                opacity: 1;
+            }
+
+            100% {
+                top: 18px;
+                opacity: 0;
+            }
+        }
+
+        /* --- Services Section --- */
+        .services {
+            background-color: #0f0f0f;
+        }
+
+        .service-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 40px;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .service-card {
+            background: rgba(255, 255, 255, 0.03);
+            border: 1px solid rgba(255, 255, 255, 0.05);
+            padding: 40px 30px;
+            text-align: center;
+            transition: all 0.3s ease;
+        }
+
+        .service-card:hover {
+            border-color: var(--color-accent);
+            transform: translateY(-5px);
+            background: rgba(255, 255, 255, 0.05);
+        }
+
+        .service-icon {
+            font-size: 2rem;
+            color: var(--color-accent);
+            margin-bottom: 20px;
+        }
+
+        .service-title {
+            font-family: var(--font-jp);
+            font-size: 1.2rem;
+            margin-bottom: 15px;
+            letter-spacing: 0.1em;
+        }
+
+        .service-desc {
+            font-size: 0.9rem;
+            color: var(--color-text-sub);
+            line-height: 1.8;
+            font-family: var(--font-body);
+        }
+
+        /* --- Safety/Trust Section --- */
+        .safety {
+            background-color: var(--color-bg);
+            text-align: center;
+            position: relative;
+        }
+
+        .safety-content {
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        .trust-badge {
+            display: inline-block;
+            border: 1px solid var(--color-accent);
+            color: var(--color-accent);
+            padding: 8px 16px;
+            font-family: var(--font-en);
+            letter-spacing: 0.15em;
+            margin-bottom: 30px;
+            font-size: 0.8rem;
+        }
+
+        .safety h3 {
+            font-family: var(--font-jp);
+            font-size: 1.8rem;
+            margin-bottom: 30px;
+            line-height: 1.6;
+        }
+
+        .safety p {
+            color: var(--color-text-sub);
+            line-height: 2;
+            margin-bottom: 40px;
+            font-family: var(--font-body);
+        }
+
+        /* --- CTA Section --- */
+        .cta {
+            background: linear-gradient(rgba(10, 10, 10, 0.8), rgba(10, 10, 10, 0.8)), url('file:///C:/Users/user/.gemini/antigravity/brain/15b7921e-8a96-4153-8db1-564f34a72873/luxury_security_car_hero_1768944835229.png');
+            background-size: cover;
+            background-position: center;
+            text-align: center;
+            padding: 120px 5%;
+            background-attachment: fixed;
+        }
+
+        /* --- Footer --- */
+        footer {
+            background-color: #050505;
+            padding: 60px 5% 20px;
+            border-top: 1px solid #222;
+        }
+
+        .footer-content {
+            display: flex;
+            justify-content: space-between;
+            flex-wrap: wrap;
+            max-width: 1200px;
+            margin: 0 auto 60px;
+            gap: 40px;
+        }
+
+        .footer-logo {
+            font-family: var(--font-en);
+            font-size: 1.5rem;
+            margin-bottom: 20px;
+            color: var(--color-text-main);
+        }
+
+        .footer-info {
+            color: var(--color-text-sub);
+            line-height: 1.8;
+            font-size: 0.9rem;
+        }
+
+        .copyright {
+            text-align: center;
+            color: #444;
+            font-size: 0.75rem;
+            font-family: var(--font-en);
+            padding-top: 20px;
+            border-top: 1px solid #111;
+        }
+
+        @media (max-width: 768px) {
+            .service-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .footer-content {
+                flex-direction: column;
+            }
+
+            .hero-title-jp {
+                font-size: 2.2rem;
+            }
+
+            .hero-content {
+                left: 5%;
+                width: 90%;
+            }
+
+            header {
+                padding: 20px 5%;
+            }
+
+            nav {
+                display: none;
+            }
+
+            .bottom-bar {
+                display: none;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+    <div class="container">
+        <!-- Header -->
+        <header>
+            <div class="logo">SECURE<span>X</span></div>
+            <nav>
+                <ul>
+                    <li><a href="#services">SERVICES</a></li>
+                    <li><a href="#trust">TRUST</a></li>
+                    <li><a href="#contact">CONTACT</a></li>
+                </ul>
+            </nav>
+        </header>
+
+        <!-- Hero Section -->
+        <section class="hero">
+            <div class="hero-overlay"></div>
+
+            <div class="hero-content">
+                <span class="hero-title-en">Executive Security & Chauffeur</span>
+                <h1 class="hero-title-jp">
+                    静寂と安全を、<br>
+                    移動空間に。
+                </h1>
+                <p class="hero-sub">
+                    高度な訓練を受けたセキュリティドライバーが、<br>
+                    貴方の移動時間を「最高の実務空間」へと変える。
+                </p>
+                <a href="#services" class="gold-border-btn">VIEW SERVICES</a>
+            </div>
+
+            <!-- Bottom Confidence -->
+            <div class="bottom-bar">
+                <p class="confidentiality">STRICT CONFIDENTIALITY GUARANTEED</p>
+            </div>
+
+            <div class="scroll-indicator">
+                <div class="mouse">
+                    <div class="wheel"></div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Services Section -->
+        <section id="services" class="services">
+            <h2 class="section-title">OUR SERVICES<span>提供サービス</span></h2>
+
+            <div class="service-grid">
+                <div class="service-card">
+                    <div class="service-icon">◆</div>
+                    <h3 class="service-title">セキュリティドライバー</h3>
+                    <p class="service-desc">
+                        役員車・社用車の運行を代行。高度な運転技術に加え、警護のプロとしての視点を持ち、日々の移動に絶対の安心を提供します。
+                    </p>
+                </div>
+                <div class="service-card">
+                    <div class="service-icon">◆</div>
+                    <h3 class="service-title">身辺警護</h3>
+                    <p class="service-desc">
+                        脅威レベルに応じた最適な警護プランを構築。威圧感を与えない黒子としての警護から、緊急時の即応体制まで対応します。
+                    </p>
+                </div>
+                <div class="service-card">
+                    <div class="service-icon">◆</div>
+                    <h3 class="service-title">スポット送迎</h3>
+                    <p class="service-desc">
+                        重要な海外ゲストの空港送迎や、ゴルフ場・会食への移動など、1日単位での高品質なドライバー手配が可能です。
+                    </p>
+                </div>
+            </div>
+        </section>
+
+        <!-- Safety/Trust Section -->
+        <section id="trust" class="safety">
+            <div class="safety-content">
+                <span class="trust-badge">NON-DISCLOSURE AGREEMENT</span>
+                <h2 class="section-title" style="margin-bottom: 40px;">TRUST & INTEGRITY<span>信頼への約束</span></h2>
+
+                <h3>鉄壁の守秘義務と、<br>洗練されたホスピタリティ。</h3>
+                <p>
+                    私たちは単なる移動手段ではありません。<br>
+                    お客様の「プライバシー」と「時間」を守る防波堤です。<br>
+                    全スタッフに対して厳格な身元保証と守秘義務契約を締結。<br>
+                    車内での会話、立ち寄り先、同乗者など、一切の情報を外部に漏らすことはありません。
+                </p>
+                <a href="#" class="gold-border-btn">READ POLICY</a>
+            </div>
+        </section>
+
+        <!-- CTA Section -->
+        <section id="contact" class="cta">
+            <h2 class="section-title">CONTACT<span>お問い合わせ</span></h2>
+            <p style="margin-bottom: 40px; color: #ccc;">
+                お見積もり、ご相談は専用フォームまたはお電話にて承ります。<br>
+                お急ぎの案件もご相談ください。
+            </p>
+            <a href="#" class="gold-border-btn" style="background: var(--color-accent); color: #000;">CONTACT US</a>
+        </section>
+
+        <!-- Footer -->
+        <footer>
+            <div class="footer-content">
+                <div class="footer-left">
+                    <div class="footer-logo">SECURE<span>X</span></div>
+                    <p class="footer-info">
+                        東京都港区〇〇 1-2-3 Minato-ku, Tokyo<br>
+                        TEL: 03-XXXX-XXXX<br>
+                        東京都公安委員会認定 第123456号
+                    </p>
+                </div>
+                <div class="footer-right">
+                    <p class="footer-info" style="text-align: right;">
+                        <a href="#" style="color: #666; text-decoration: none; margin-right: 20px;">PRIVACY POLICY</a>
+                        <a href="#" style="color: #666; text-decoration: none;">COMPANY</a>
+                    </p>
+                </div>
+            </div>
+            <div class="copyright">
+                &copy; 2026 SECURE X Inc. All Rights Reserved.
+            </div>
+        </footer>
+    </div>
+</body>
+
+</html>
