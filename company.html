@@ -10,12 +10,57 @@
   <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;600&family=Noto+Serif+JP:wght@300;500&family=Lato:wght@300;400&display=swap" rel="stylesheet">
 
   <style>
-    :root {
-      --bg:#0a0a0a; --text:#f0f0f0; --sub:#aaa; --gold:#c5a059;
-      --jp:'Noto Serif JP', serif; --en:'Cinzel', serif; --body:'Lato', sans-serif;
-    }
-    *{margin:0;padding:0;box-sizing:border-box;}
-    body{background:var(--bg);color:var(--text);font-family:var(--body);}
+   .site-header{
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  padding: 18px 6%;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background: rgba(0,0,0,.85);
+  backdrop-filter: blur(8px);
+  z-index: 1000;
+  border-bottom: 1px solid rgba(255,255,255,.06);
+}
+
+.logo a{
+  font-family: var(--en);
+  font-size: 1.2rem;
+  letter-spacing: .12em;
+  text-decoration: none;
+  color: var(--text);
+}
+
+.logo span{
+  color: var(--gold);
+}
+
+.nav a{
+  margin-left: 28px;
+  font-family: var(--en);
+  font-size: .85rem;
+  letter-spacing: .14em;
+  text-decoration: none;
+  color: var(--text);
+  opacity: .8;
+  transition: .25s;
+}
+
+.nav a:hover{
+  opacity: 1;
+  color: var(--gold);
+}
+
+/* ヘッダー分の余白（重要） */
+body{
+  padding-top: 72px;
+}
+
+@media (max-width: 768px){
+  .nav{ display:none; }
+}
 
     header{
       position:fixed; top:0; width:100%;
