@@ -19,18 +19,15 @@
       background:var(--bg);
       color:var(--text);
       font-family:var(--body);
-      padding-top:72px; /* ヘッダー分 */
+      padding-top:72px;
     }
-.nav a.active{
-  color: var(--gold);
-  opacity: 1;
-}
-    /* ===== 共通ヘッダー（これだけ） ===== */
+
+    /* ===== Header ===== */
     .site-header{
       position:fixed; top:0; left:0; width:100%;
       padding:18px 6%;
       display:flex; justify-content:space-between; align-items:center;
-      background:rgba(0,0,0,.85);
+      background:rgba(0,0,0,.88);
       backdrop-filter:blur(8px);
       z-index:1000;
       border-bottom:1px solid rgba(255,255,255,.06);
@@ -51,37 +48,53 @@
       letter-spacing:.14em;
       text-decoration:none;
       color:var(--text);
-      opacity:.8;
+      opacity:.75;
       transition:.25s;
     }
-    .nav a:hover{opacity:1;color:var(--gold);}
+    .nav a:hover,
+    .nav a.active{
+      opacity:1;
+      color:var(--gold);
+    }
     @media (max-width:768px){ .nav{display:none;} }
 
-    /* ===== 本文 ===== */
+    /* ===== Hero ===== */
     .hero{
       height:62vh;
       background-image:url("./service_hero.png");
       background-size:cover;
       background-position:center;
       position:relative;
-      margin:0; /* 旧margin-topを使わない */
     }
-  .hero::after{
-  content:"";
-  position:absolute;
-  inset:0;
-  background:linear-gradient(
-    rgba(0,0,0,.55),
-    rgba(0,0,0,.85)
-  );
-}
+    .hero::after{
+      content:""; position:absolute; inset:0;
+      background:linear-gradient(
+        to bottom,
+        rgba(0,0,0,.75) 0%,
+        rgba(0,0,0,.45) 45%,
+        rgba(0,0,0,.35) 60%,
+        rgba(0,0,0,.85) 100%
+      );
+    }
     .hero-content{
       position:relative; z-index:1;
       padding:70px 8% 0;
       max-width:860px;
     }
-    .kicker{font-family:var(--en); color:var(--gold); letter-spacing:.28em; font-size:.9rem;}
-    h1{font-family:var(--jp); font-size:2.4rem; margin:18px 0 12px; line-height:1.5;}
+    .kicker{
+      font-family:var(--en);
+      color:var(--gold);
+      letter-spacing:.28em;
+      font-size:.9rem;
+      text-shadow:0 2px 12px rgba(0,0,0,.6);
+    }
+    h1{
+      font-family:var(--jp);
+      color:#f6f6f6;
+      font-size:2.4rem;
+      margin:18px 0 12px;
+      line-height:1.5;
+    }
     .lead{color:var(--sub); line-height:2;}
 
     main{padding:70px 8% 90px;}
@@ -91,7 +104,17 @@
       letter-spacing:.2em;
       text-align:center;
       margin-bottom:50px;
+      position:relative;
     }
+    .section-title::after{
+      content:"";
+      display:block;
+      width:60px; height:1px;
+      background:var(--gold);
+      margin:18px auto 0;
+      opacity:.7;
+    }
+
     .grid{
       display:grid;
       grid-template-columns:repeat(3, 1fr);
@@ -105,6 +128,7 @@
       padding:28px 22px;
       transition:.25s ease;
       min-height:220px;
+      box-shadow:0 10px 30px rgba(0,0,0,.25);
     }
     .card:hover{border-color:var(--gold); transform:translateY(-4px); background:rgba(255,255,255,.05);}
     .icon{color:var(--gold); font-size:1.2rem; margin-bottom:14px;}
@@ -151,8 +175,8 @@
       <div class="kicker">SERVICES</div>
       <h1>移動と警護を、ひとつに。</h1>
       <p class="lead">
-        目的・脅威レベル・運用条件に合わせて最適化。<br>
-        役員・VIPの移動を「安全で静かな実務空間」へ整えます。
+        役員・VIP向けに特化した運用。<br>
+        安全だけでなく、時間・情報・プライバシーを守る設計で対応します。
       </p>
     </div>
   </section>
@@ -164,28 +188,37 @@
       <div class="card">
         <div class="icon">◆</div>
         <div class="title">セキュリティドライバー</div>
-        <div class="desc">役員車・社用車の運行を代行。高度な運転技術と警護視点で、日々の移動に安心を提供します。</div>
+        <div class="desc">
+          役員車・社用車の運行を専門に担当。<br>
+          警護視点で判断し、安全な移動を支えます。
+        </div>
       </div>
 
       <div class="card">
         <div class="icon">◆</div>
         <div class="title">身辺警護</div>
-        <div class="desc">脅威レベルに応じた警護プランを構築。威圧感のない黒子運用から緊急即応まで対応します。</div>
+        <div class="desc">
+          行動内容や脅威レベルに応じて対応。<br>
+          自然な警護から緊急時対応まで行います。
+        </div>
       </div>
 
       <div class="card">
         <div class="icon">◆</div>
         <div class="title">スポット送迎</div>
-        <div class="desc">空港送迎、会食、ゴルフ等の重要移動を1日単位で手配。守秘と品質を優先して運用します。</div>
+        <div class="desc">
+          空港送迎・会食・ゴルフ等に対応。<br>
+          守秘を前提に、1日単位で手配します。
+        </div>
       </div>
     </div>
 
     <div class="note">
-      <strong style="color:#d8d8d8;">運用メモ（仮）</strong><br>
-      NDA対応 / 事前ルート設計 / 立ち寄り先秘匿 / 同乗者情報の取扱い / 緊急時プロトコル など、要件に合わせて運用を組み替えます。
+      <strong style="color:#d8d8d8;">守秘・運用</strong><br>
+      全サービスで守秘義務契約を前提とし、移動に関する情報を外部に漏らしません。
     </div>
   </main>
 
-  <footer>© 2026 fornus. Fujiwara </footer>
+  <footer>© 2026 SECURE X Inc. All Rights Reserved.</footer>
 </body>
 </html>
