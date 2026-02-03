@@ -3,307 +3,266 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Security & Chauffeur Service</title>
+  <title>SECURE X | Security & Chauffeur Service</title>
 
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;600&family=Noto+Serif+JP:wght@300;500&family=Lato:wght@300;400&display=swap" rel="stylesheet">
 
   <style>
+    :root{
+      --bg:#0a0a0a; --text:#f0f0f0; --sub:#aaa; --gold:#c5a059;
+      --jp:'Noto Serif JP', serif; --en:'Cinzel', serif; --body:'Lato', sans-serif;
+    }
+    *{margin:0;padding:0;box-sizing:border-box;}
+    body{
+      background:var(--bg);
+      color:var(--text);
+      font-family:var(--body);
+      padding-top:72px;
+    }
+
+    /* ===== Header ===== */
     .site-header{
-  position: fixed;
-  top: 0;
-  left: 0;
-  width: 100%;
-  padding: 18px 6%;
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  background: rgba(0,0,0,.85);
-  backdrop-filter: blur(8px);
-  z-index: 1000;
-  border-bottom: 1px solid rgba(255,255,255,.06);.portfolio{
-  background:#0f0f0f;
-  padding:110px 8%;
-}
-.pf-wrap{
-  max-width:1100px;
-  margin:0 auto;
-}
-.pf-card{
-  background:rgba(255,255,255,.03);
-  border:1px solid rgba(255,255,255,.06);
-  padding:28px 26px;
-  margin-bottom:26px;
-}
-.pf-label{
-  font-family:var(--en);
-  color:var(--gold);
-  letter-spacing:.18em;
-  font-size:.8rem;
-  margin-bottom:10px;
-  opacity:.9;
-}
-.pf-title{
-  font-family:var(--jp);
-  font-size:1.25rem;
-  letter-spacing:.08em;
-  margin-bottom:12px;
-}
-.pf-text{
-  color:var(--sub);
-  line-height:2;
-}
-.pf-grid{
-  display:grid;
-  grid-template-columns:repeat(2, 1fr);
-  gap:14px;
-  margin-bottom:26px;
-}
-.pf-item{
-  background:rgba(255,255,255,.02);
-  border:1px solid rgba(255,255,255,.06);
-  padding:16px 16px;
-}
-.pf-key{
-  font-family:var(--en);
-  letter-spacing:.16em;
-  font-size:.78rem;
-  color:#d8d8d8;
-  opacity:.9;
-  margin-bottom:8px;
-}
-.pf-val{
-  color:var(--sub);
-  line-height:1.8;
-  font-size:.95rem;
-}
-.pf-link{
-  color:var(--gold);
-  text-decoration:none;
-  border-bottom:1px solid rgba(197,160,89,.4);
-}
-.pf-link:hover{
-  border-bottom-color:rgba(197,160,89,.9);
-}
-.pf-cta{
-  text-align:center;
-}
-@media (max-width:768px){
-  .pf-grid{grid-template-columns:1fr;}
-}
-}
-
-.logo a{
-  font-family: var(--en);
-  font-size: 1.2rem;
-  letter-spacing: .12em;
-  text-decoration: none;
-  color: var(--text);
-}
-
-.logo span{
-  color: var(--gold);
-}
-
-.nav a{
-  margin-left: 28px;
-  font-family: var(--en);
-  font-size: .85rem;
-  letter-spacing: .14em;
-  text-decoration: none;
-  color: var(--text);
-  opacity: .8;
-  transition: .25s;
-}
-
-.nav a:hover{
-  opacity: 1;
-  color: var(--gold);
-}
-
-/* ヘッダー分の余白（重要） */
-body{
-  padding-top: 72px;
-}
-
-@media (max-width: 768px){
-  .nav{ display:none; }
-}
-
-    body {
-      background: var(--bg);
-      color: var(--text);
-      font-family: var(--body);
+      position:fixed; top:0; left:0; width:100%;
+      padding:18px 6%;
+      display:flex; justify-content:space-between; align-items:center;
+      background:rgba(0,0,0,.88);
+      backdrop-filter:blur(8px);
+      z-index:1000;
+      border-bottom:1px solid rgba(255,255,255,.06);
     }
-
-<header class="site-header">
-  <div class="logo">
-    <a href="./index.html">SECURE<span>X</span></a>
-  </div>
-
-  <nav class="nav">
-    <a href="./service.html">SERVICES</a>
-    <a href="./company.html">COMPANY</a>
-    <a href="./index.html#contact">CONTACT</a>
-  </nav>
-</header>
-
-    .logo {
-      font-family: var(--en);
-      letter-spacing: .1em;
+    .logo a{
+      font-family:var(--en);
+      letter-spacing:.12em;
+      text-decoration:none;
+      color:var(--text);
+      font-weight:600;
+      font-size:1.2rem;
     }
-    .logo span { color: var(--gold); }
-
-    .hero {
-      height: 100vh;
-      background-image: url("./index_hero.png");
-      background-size: cover;
-      background-position: center;
-      position: relative;
+    .logo span{color:var(--gold);}
+    .nav a{
+      margin-left:28px;
+      font-family:var(--en);
+      font-size:.85rem;
+      letter-spacing:.14em;
+      text-decoration:none;
+      color:var(--text);
+      opacity:.75;
+      transition:.25s;
     }
+    .nav a:hover,
+    .nav a.active{
+      opacity:1;
+      color:var(--gold);
+    }
+    @media (max-width:768px){ .nav{display:none;} }
 
+    /* ===== Hero ===== */
+    .hero{
+      height:100vh;
+      background-image:url("./index_hero.png");
+      background-size:cover;
+      background-position:center;
+      position:relative;
+    }
     .hero::after{
-  content:"";
-  position:absolute;
-  inset:0;
-  background:linear-gradient(
-    rgba(0,0,0,.55),
-    rgba(0,0,0,.85)
-  );
-}
-
-    .hero-content {
-      position: relative;
-      z-index: 1;
-      top: 50%;
-      transform: translateY(-50%);
-      padding-left: 8%;
-      max-width: 600px;
+      content:""; position:absolute; inset:0;
+      background:linear-gradient(rgba(0,0,0,.55), rgba(0,0,0,.88));
+    }
+    .hero-content{
+      position:relative; z-index:1;
+      top:50%; transform:translateY(-50%);
+      padding-left:8%; max-width:640px;
+    }
+    .hero-kicker{
+      font-family:var(--en);
+      color:var(--gold);
+      letter-spacing:.3em;
+      font-size:.9rem;
+      margin-bottom:18px;
+    }
+    .hero h1{
+      font-family:var(--jp);
+      font-size:3rem;
+      line-height:1.6;
+      margin-bottom:22px;
+    }
+    .hero p{
+      color:var(--sub);
+      line-height:2;
+      margin-bottom:40px;
     }
 
-    .hero-content span {
-      font-family: var(--en);
-      color: var(--gold);
-      letter-spacing: .3em;
-      font-size: .9rem;
+    .btn{
+      display:inline-block;
+      border:1px solid var(--gold);
+      padding:12px 32px;
+      color:var(--text);
+      text-decoration:none;
+      font-family:var(--en);
+      letter-spacing:.15em;
     }
 
-    .hero-content h1 {
-      font-family: var(--jp);
-      font-size: 3rem;
-      margin: 20px 0;
-      line-height: 1.6;
+    /* ===== Sections ===== */
+    section{padding:120px 8%;}
+    .section-title{
+      text-align:center;
+      font-family:var(--en);
+      color:var(--gold);
+      letter-spacing:.2em;
+      margin-bottom:60px;
+      position:relative;
+    }
+    .section-title span{
+      display:block;
+      font-family:var(--jp);
+      font-size:.95rem;
+      color:var(--sub);
+      margin-top:12px;
+    }
+    .section-title::after{
+      content:"";
+      display:block;
+      width:60px; height:1px;
+      background:var(--gold);
+      margin:18px auto 0;
+      opacity:.7;
     }
 
-    .hero-content p {
-      color: var(--sub);
-      line-height: 2;
-      margin-bottom: 40px;
+    /* ===== Portfolio ===== */
+    .portfolio{background:#0f0f0f;}
+    .pf-wrap{max-width:1100px;margin:0 auto;}
+    .pf-card{
+      background:rgba(255,255,255,.03);
+      border:1px solid rgba(255,255,255,.06);
+      padding:28px 26px;
+      margin-bottom:26px;
+      box-shadow:0 10px 30px rgba(0,0,0,.25);
+    }
+    .pf-label{
+      font-family:var(--en);
+      color:var(--gold);
+      letter-spacing:.18em;
+      font-size:.8rem;
+      margin-bottom:10px;
+    }
+    .pf-title{
+      font-family:var(--jp);
+      font-size:1.25rem;
+      letter-spacing:.08em;
+      margin-bottom:12px;
+    }
+    .pf-text{color:var(--sub);line-height:2;}
+    .pf-grid{
+      display:grid;
+      grid-template-columns:repeat(2,1fr);
+      gap:14px;
+      margin-bottom:30px;
+    }
+    .pf-item{
+      background:rgba(255,255,255,.02);
+      border:1px solid rgba(255,255,255,.06);
+      padding:16px;
+    }
+    .pf-key{
+      font-family:var(--en);
+      letter-spacing:.16em;
+      font-size:.78rem;
+      color:#d8d8d8;
+      margin-bottom:8px;
+    }
+    .pf-val{color:var(--sub);line-height:1.8;font-size:.95rem;}
+    .pf-link{
+      color:var(--gold);
+      text-decoration:none;
+      border-bottom:1px solid rgba(197,160,89,.4);
+    }
+    .pf-cta{text-align:center;}
+
+    @media (max-width:768px){
+      .pf-grid{grid-template-columns:1fr;}
+      .hero h1{font-size:2.2rem;}
     }
 
-    .btn {
-      border: 1px solid var(--gold);
-      padding: 12px 30px;
-      color: var(--text);
-      text-decoration: none;
-      font-family: var(--en);
-      letter-spacing: .15em;
-    }
-
-    section {
-      padding: 120px 8%;
-    }
-
-    .title {
-      text-align: center;
-      color: var(--gold);
-      font-family: var(--en);
-      letter-spacing: .2em;
-      margin-bottom: 60px;
-    }
-
-    footer {
-      text-align: center;
-      padding: 40px;
-      color: #444;
-      font-size: .8rem;
+    /* ===== Footer / CTA ===== */
+    footer{
+      text-align:center;
+      padding:70px 8% 40px;
+      color:#777;
+      font-size:.85rem;
+      border-top:1px solid #111;
     }
   </style>
 </head>
 
 <body>
+  <header class="site-header">
+    <div class="logo"><a href="./index.html">SECURE<span>X</span></a></div>
+    <nav class="nav">
+      <a href="./service.html">SERVICES</a>
+      <a href="./company.html">COMPANY</a>
+      <a href="#contact" class="active">CONTACT</a>
+    </nav>
+  </header>
 
-<header>
-  <div class="logo">SECURE<span>X</span></div>
-</header>
-
-<section class="hero">
-  <div class="hero-content">
-    <span>EXECUTIVE SECURITY</span>
-    <h1>
-      静寂と安全を、<br>
-      移動空間に。
-    </h1>
-    <p>
-      高度な訓練を受けたセキュリティドライバーが、<br>
-      あなたの移動時間を最高の実務空間へ。
-    </p>
-    <a class="btn" href="#">CONTACT</a>
-  </div>
-</section>
-<section class="portfolio" id="portfolio">
-  <h2 class="section-title">PORTFOLIO<span>制作概要</span></h2>
-
-  <div class="pf-wrap">
-    <div class="pf-card">
-      <div class="pf-label">案件想定</div>
-      <h3 class="pf-title">セキュリティドライバー／VIP送迎 サービスサイト（プロトタイプ）</h3>
-      <p class="pf-text">
-        高級感・信頼感を重視した1ページ構成。ヒーロー＋サービス訴求＋会社情報の3点に絞り、
-        “静寂と安全”を軸にトーンを統一しました。
+  <section class="hero">
+    <div class="hero-content">
+      <div class="hero-kicker">EXECUTIVE SECURITY</div>
+      <h1>静寂と安全を、<br>移動空間に。</h1>
+      <p>
+        高度な訓練を受けたセキュリティドライバーが、<br>
+        あなたの移動時間を最高の実務空間へ。
       </p>
+      <a class="btn" href="./service.html">VIEW SERVICES</a>
     </div>
+  </section>
 
-    <div class="pf-grid">
-      <div class="pf-item">
-        <div class="pf-key">制作範囲</div>
-        <div class="pf-val">デザイン／HTML・CSS 実装（GitHub Pages 公開）</div>
+  <section class="portfolio" id="portfolio">
+    <h2 class="section-title">PORTFOLIO<span>制作概要</span></h2>
+
+    <div class="pf-wrap">
+      <div class="pf-card">
+        <div class="pf-label">案件想定</div>
+        <h3 class="pf-title">セキュリティドライバー／VIP送迎 サービスサイト（プロトタイプ）</h3>
+        <p class="pf-text">
+          高級感・信頼感を軸に、ヒーロー訴求／サービス概要／会社情報を最短導線で設計。
+          ポートフォリオ提出を想定した静的サイト。
+        </p>
       </div>
-      <div class="pf-item">
-        <div class="pf-key">工夫点</div>
-        <div class="pf-val">タイポグラフィ、余白設計、暗部グラデで可読性確保</div>
-      </div>
-      <div class="pf-item">
-        <div class="pf-key">ページ</div>
-        <div class="pf-val">Home / Services / Company</div>
-      </div>
-      <div class="pf-item">
-        <div class="pf-key">URL</div>
-        <div class="pf-val">
-          <a class="pf-link" href="https://fornus-debug.github.io/security.driver/" target="_blank" rel="noopener">
-            https://fornus-debug.github.io/security.driver/
-          </a>
+
+      <div class="pf-grid">
+        <div class="pf-item">
+          <div class="pf-key">制作範囲</div>
+          <div class="pf-val">デザイン／HTML・CSS実装／GitHub Pages公開</div>
+        </div>
+        <div class="pf-item">
+          <div class="pf-key">工夫点</div>
+          <div class="pf-val">タイポグラフィ、余白設計、暗部グラデで可読性を確保</div>
+        </div>
+        <div class="pf-item">
+          <div class="pf-key">ページ</div>
+          <div class="pf-val">Home / Services / Company</div>
+        </div>
+        <div class="pf-item">
+          <div class="pf-key">URL</div>
+          <div class="pf-val">
+            <a class="pf-link" href="https://fornus-debug.github.io/security.driver/" target="_blank">
+              https://fornus-debug.github.io/security.driver/
+            </a>
+          </div>
         </div>
       </div>
+
+      <div class="pf-cta">
+        <a class="btn" href="./service.html">VIEW SERVICES</a>
+        <a class="btn" href="./company.html" style="margin-left:14px;">VIEW COMPANY</a>
+      </div>
     </div>
+  </section>
 
-    <div class="pf-cta">
-      <a class="gold-border-btn" href="./service.html">VIEW SERVICES</a>
-      <a class="gold-border-btn" href="./company.html" style="margin-left:14px;">VIEW COMPANY</a>
-    </div>
-  </div>
-</section>
-<section>
-  <h2 class="title">SERVICES</h2>
-  <p style="text-align:center;color:#aaa;">
-    セキュリティドライバー / 身辺警護 / スポット送迎
-  </p>
-</section>
-
-<footer>
-  © 2026 fornus.
-</footer>
-
+  <footer id="contact">
+    © 2026 fornus. Fujiwara.
+  </footer>
 </body>
 </html>
