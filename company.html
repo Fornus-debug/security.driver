@@ -3,85 +3,65 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Company | Security & Chauffeur Service</title>
+  <title>Company | SECURE X</title>
 
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;600&family=Noto+Serif+JP:wght@300;500&family=Lato:wght@300;400&display=swap" rel="stylesheet">
 
   <style>
-   .site-header{
-  position: fixed;
-  top: 0;
-  left: 0;
-  width: 100%;
-  padding: 18px 6%;
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  background: rgba(0,0,0,.85);
-  backdrop-filter: blur(8px);
-  z-index: 1000;
-  border-bottom: 1px solid rgba(255,255,255,.06);
-}
+    :root{
+      --bg:#0a0a0a; --text:#f0f0f0; --sub:#aaa; --gold:#c5a059;
+      --jp:'Noto Serif JP', serif; --en:'Cinzel', serif; --body:'Lato', sans-serif;
+    }
+    *{margin:0;padding:0;box-sizing:border-box;}
+    body{
+      background:var(--bg);
+      color:var(--text);
+      font-family:var(--body);
+      padding-top:72px; /* ヘッダー分 */
+    }
 
-.logo a{
-  font-family: var(--en);
-  font-size: 1.2rem;
-  letter-spacing: .12em;
-  text-decoration: none;
-  color: var(--text);
-}
-
-.logo span{
-  color: var(--gold);
-}
-
-.nav a{
-  margin-left: 28px;
-  font-family: var(--en);
-  font-size: .85rem;
-  letter-spacing: .14em;
-  text-decoration: none;
-  color: var(--text);
-  opacity: .8;
-  transition: .25s;
-}
-
-.nav a:hover{
-  opacity: 1;
-  color: var(--gold);
-}
-
-/* ヘッダー分の余白（重要） */
-body{
-  padding-top: 72px;
-}
-
-@media (max-width: 768px){
-  .nav{ display:none; }
-}
-
-    header{
-      position:fixed; top:0; width:100%;
+    /* ===== 共通ヘッダー（これだけ） ===== */
+    .site-header{
+      position:fixed; top:0; left:0; width:100%;
       padding:18px 6%;
       display:flex; justify-content:space-between; align-items:center;
-      background:rgba(0,0,0,.82); z-index:10; border-bottom:1px solid rgba(255,255,255,.06);
+      background:rgba(0,0,0,.85);
+      backdrop-filter:blur(8px);
+      z-index:1000;
+      border-bottom:1px solid rgba(255,255,255,.06);
     }
-    .logo{font-family:var(--en);letter-spacing:.12em;font-weight:600;}
+    .logo a{
+      font-family:var(--en);
+      letter-spacing:.12em;
+      text-decoration:none;
+      color:var(--text);
+      font-weight:600;
+      font-size:1.2rem;
+    }
     .logo span{color:var(--gold);}
-    nav a{
-      color:var(--text); text-decoration:none; font-family:var(--en);
-      letter-spacing:.12em; font-size:.85rem; opacity:.85;
-      margin-left:26px;
+    .nav a{
+      margin-left:28px;
+      font-family:var(--en);
+      font-size:.85rem;
+      letter-spacing:.14em;
+      text-decoration:none;
+      color:var(--text);
+      opacity:.8;
+      transition:.25s;
     }
-    nav a:hover{opacity:1;color:var(--gold);}
+    .nav a:hover{opacity:1;color:var(--gold);}
+    @media (max-width:768px){ .nav{display:none;} }
 
+    /* ===== 本文 ===== */
     .hero{
       height:62vh;
       background-image:url("./company_hero.png");
-      background-size:cover; background-position:center;
-      position:relative; margin-top:64px;
+      background-size:cover;
+      background-position:center;
+      position:relative;
+      margin:0; /* 旧margin-topを使わない */
     }
     .hero::after{
       content:""; position:absolute; inset:0;
@@ -89,44 +69,61 @@ body{
     }
     .hero-content{
       position:relative; z-index:1;
-      padding:70px 8% 0; max-width:860px;
+      padding:70px 8% 0;
+      max-width:860px;
     }
-    .kicker{font-family:var(--en); color:var(--gold); letter-spacing:.28em; font-size:.9rem;}
-    h1{font-family:var(--jp); font-size:2.4rem; margin:18px 0 12px; line-height:1.5;}
+    .kicker{
+      font-family:var(--en);
+      color:var(--gold);
+      letter-spacing:.28em;
+      font-size:.9rem;
+    }
+    h1{
+      font-family:var(--jp);
+      font-size:2.4rem;
+      margin:18px 0 12px;
+      line-height:1.5;
+    }
     .lead{color:var(--sub); line-height:2;}
 
     main{padding:70px 8% 90px;}
     .section-title{
-      font-family:var(--en); color:var(--gold);
-      letter-spacing:.2em; text-align:center; margin-bottom:40px;
+      font-family:var(--en);
+      color:var(--gold);
+      letter-spacing:.2em;
+      text-align:center;
+      margin-bottom:40px;
     }
     .card{
-      max-width:980px; margin:0 auto 28px;
+      max-width:980px;
+      margin:0 auto 28px;
       background:rgba(255,255,255,.03);
       border:1px solid rgba(255,255,255,.06);
       padding:28px 26px;
     }
     .card h2{
-      font-family:var(--jp); font-size:1.2rem; letter-spacing:.08em; margin-bottom:12px;
+      font-family:var(--jp);
+      font-size:1.2rem;
+      letter-spacing:.08em;
+      margin-bottom:12px;
     }
     .card p{color:var(--sub); line-height:2;}
-
-    .table{
-      width:100%; border-collapse:collapse; margin-top:8px;
-      font-size:.95rem;
-    }
+    .table{width:100%; border-collapse:collapse; margin-top:8px; font-size:.95rem;}
     .table th,.table td{
       border-top:1px solid rgba(255,255,255,.08);
-      padding:14px 10px; text-align:left; vertical-align:top;
+      padding:14px 10px;
+      text-align:left;
+      vertical-align:top;
     }
     .table th{width:180px; color:#d8d8d8; font-weight:600;}
     footer{
-      text-align:center; padding:36px; color:#444; font-size:.8rem;
+      text-align:center;
+      padding:36px;
+      color:#444;
+      font-size:.8rem;
       border-top:1px solid #111;
     }
     @media (max-width:768px){
-      nav{display:none;}
-      .hero{height:58vh;}
       h1{font-size:1.9rem;}
       .table th{width:120px;}
     }
@@ -135,16 +132,13 @@ body{
 
 <body>
   <header class="site-header">
-  <div class="logo">
-    <a href="./index.html">SECURE<span>X</span></a>
-  </div>
-
-  <nav class="nav">
-    <a href="./service.html">SERVICES</a>
-    <a href="./company.html">COMPANY</a>
-    <a href="./index.html#contact">CONTACT</a>
-  </nav>
-</header>
+    <div class="logo"><a href="./index.html">SECURE<span>X</span></a></div>
+    <nav class="nav">
+      <a href="./service.html">SERVICES</a>
+      <a href="./company.html">COMPANY</a>
+      <a href="./index.html#contact">CONTACT</a>
+    </nav>
+  </header>
 
   <section class="hero">
     <div class="hero-content">
@@ -175,19 +169,19 @@ body{
       <h2>ミッション</h2>
       <p>
         お客様の移動を「最高の実務空間」へ。<br>
-        そのために、守秘・安全・ホスピタリティを標準化し、再現性のある品質で提供します。
+        守秘・安全・ホスピタリティを標準化し、再現性のある品質で提供します。
       </p>
     </div>
 
     <div class="card">
       <h2>品質と守秘</h2>
       <p>
-        NDA（守秘義務契約）・身元保証・運用ルールを徹底し、車内での会話、立ち寄り先、同乗者など、
-        一切の情報を外部に漏らしません。
+        NDA（守秘義務契約）・身元保証・運用ルールを徹底し、
+        車内での会話、立ち寄り先、同乗者など一切の情報を外部に漏らしません。
       </p>
     </div>
   </main>
 
   <footer>© 2026 SECURE X Inc. All Rights Reserved.</footer>
 </body>
-</html>    
+</html>
