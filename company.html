@@ -1,475 +1,145 @@
 <!DOCTYPE html>
 <html lang="ja">
-
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Company & Contact | Security & Chauffeur Service</title>
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link
-        href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;600&family=Noto+Serif+JP:wght@300;500&family=Lato:wght@300;400&display=swap"
-        rel="stylesheet">
-    <style>
-        /* Reuse CSS from index.html */
-        :root {
-            --color-bg: #0a0a0a;
-            --color-text-main: #f0f0f0;
-            --color-text-sub: #a0a0a0;
-            --color-accent: #c5a059;
-            --color-accent-dark: #8a6e30;
-            --font-jp: 'Noto Serif JP', serif;
-            --font-en: 'Cinzel', serif;
-            --font-body: 'Lato', sans-serif;
-        }
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Company | Security & Chauffeur Service</title>
 
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;600&family=Noto+Serif+JP:wght@300;500&family=Lato:wght@300;400&display=swap" rel="stylesheet">
 
-        body {
-            background-color: var(--color-bg);
-            color: var(--color-text-main);
-            font-family: var(--font-body);
-            overflow-x: hidden;
-            scroll-behavior: smooth;
-        }
+  <style>
+    :root {
+      --bg:#0a0a0a; --text:#f0f0f0; --sub:#aaa; --gold:#c5a059;
+      --jp:'Noto Serif JP', serif; --en:'Cinzel', serif; --body:'Lato', sans-serif;
+    }
+    *{margin:0;padding:0;box-sizing:border-box;}
+    body{background:var(--bg);color:var(--text);font-family:var(--body);}
 
-        .container {
-            width: 100%;
-            position: relative;
-        }
+    header{
+      position:fixed; top:0; width:100%;
+      padding:18px 6%;
+      display:flex; justify-content:space-between; align-items:center;
+      background:rgba(0,0,0,.82); z-index:10; border-bottom:1px solid rgba(255,255,255,.06);
+    }
+    .logo{font-family:var(--en);letter-spacing:.12em;font-weight:600;}
+    .logo span{color:var(--gold);}
+    nav a{
+      color:var(--text); text-decoration:none; font-family:var(--en);
+      letter-spacing:.12em; font-size:.85rem; opacity:.85;
+      margin-left:26px;
+    }
+    nav a:hover{opacity:1;color:var(--gold);}
 
-        .gold-border-btn {
-            display: inline-block;
-            padding: 12px 32px;
-            border: 1px solid var(--color-accent);
-            color: var(--color-text-main);
-            text-decoration: none;
-            font-family: var(--font-en);
-            font-size: 0.9rem;
-            letter-spacing: 0.15em;
-            transition: all 0.4s ease;
-            background: rgba(10, 10, 10, 0.3);
-            backdrop-filter: blur(2px);
-            cursor: pointer;
-        }
+    .hero{
+      height:62vh;
+      background-image:url("./company_hero.png");
+      background-size:cover; background-position:center;
+      position:relative; margin-top:64px;
+    }
+    .hero::after{
+      content:""; position:absolute; inset:0;
+      background:linear-gradient(rgba(0,0,0,.35), rgba(0,0,0,.8));
+    }
+    .hero-content{
+      position:relative; z-index:1;
+      padding:70px 8% 0; max-width:860px;
+    }
+    .kicker{font-family:var(--en); color:var(--gold); letter-spacing:.28em; font-size:.9rem;}
+    h1{font-family:var(--jp); font-size:2.4rem; margin:18px 0 12px; line-height:1.5;}
+    .lead{color:var(--sub); line-height:2;}
 
-        .gold-border-btn:hover {
-            background: var(--color-accent);
-            color: #000;
-        }
+    main{padding:70px 8% 90px;}
+    .section-title{
+      font-family:var(--en); color:var(--gold);
+      letter-spacing:.2em; text-align:center; margin-bottom:40px;
+    }
+    .card{
+      max-width:980px; margin:0 auto 28px;
+      background:rgba(255,255,255,.03);
+      border:1px solid rgba(255,255,255,.06);
+      padding:28px 26px;
+    }
+    .card h2{
+      font-family:var(--jp); font-size:1.2rem; letter-spacing:.08em; margin-bottom:12px;
+    }
+    .card p{color:var(--sub); line-height:2;}
 
-        section {
-            padding: 100px 5%;
-        }
-
-        .section-title {
-            font-family: var(--font-en);
-            font-size: 2rem;
-            text-align: center;
-            margin-bottom: 60px;
-            color: var(--color-accent);
-            letter-spacing: 0.2em;
-        }
-
-        .section-title span {
-            display: block;
-            font-family: var(--font-jp);
-            font-size: 1rem;
-            color: var(--color-text-sub);
-            margin-top: 15px;
-            letter-spacing: 0.1em;
-        }
-
-        header {
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            padding: 20px 5%;
-            z-index: 1000;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            background: rgba(10, 10, 10, 0.8);
-            backdrop-filter: blur(10px);
-            border-bottom: 1px solid rgba(255, 255, 255, 0.05);
-        }
-
-        .logo {
-            font-family: var(--font-en);
-            font-size: 1.5rem;
-            font-weight: 600;
-            color: var(--color-text-main);
-            letter-spacing: 0.1em;
-            text-decoration: none;
-        }
-
-        .logo span {
-            color: var(--color-accent);
-        }
-
-        nav ul {
-            display: flex;
-            list-style: none;
-            gap: 40px;
-        }
-
-        nav a {
-            color: var(--color-text-main);
-            text-decoration: none;
-            font-family: var(--font-en);
-            font-size: 0.85rem;
-            letter-spacing: 0.1em;
-            opacity: 0.8;
-            transition: opacity 0.3s;
-        }
-
-        nav a:hover {
-            opacity: 1;
-            color: var(--color-accent);
-        }
-
-        /* Hero */
-        .hero {
-            width: 100%;
-            height: 50vh;
-            /* Even shorter for contact page */
-            background-image: url('file:///C:/Users/user/.gemini/antigravity/brain/15b7921e-8a96-4153-8db1-564f34a72873/company_office_skyline_dusk_1768979840938.png');
-            background-size: cover;
-            background-position: center;
-            position: relative;
-            padding: 0;
-        }
-
-        .hero-overlay {
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background: linear-gradient(to bottom,
-                    rgba(10, 10, 10, 0.5) 0%,
-                    rgba(10, 10, 10, 0.9) 100%);
-        }
-
-        .hero-content {
-            position: absolute;
-            top: 60%;
-            left: 50%;
-            transform: translate(-50%, -50%);
-            text-align: center;
-            z-index: 10;
-            width: 100%;
-        }
-
-        .hero-title-jp {
-            font-family: var(--font-en);
-            font-weight: 500;
-            font-size: 3rem;
-            letter-spacing: 0.2em;
-            color: var(--color-text-main);
-        }
-
-        .hero-breadcrumbs {
-            margin-top: 20px;
-            font-size: 0.8rem;
-            color: var(--color-text-sub);
-            font-family: var(--font-en);
-        }
-
-        /* Company Profile */
-        .company-profile {
-            max-width: 800px;
-            margin: 0 auto;
-        }
-
-        .profile-table {
-            width: 100%;
-            border-collapse: collapse;
-        }
-
-        .profile-table th,
-        .profile-table td {
-            padding: 24px;
-            border-bottom: 1px solid #333;
-            text-align: left;
-        }
-
-        .profile-table th {
-            width: 30%;
-            color: var(--color-accent);
-            font-family: var(--font-jp);
-            font-weight: normal;
-        }
-
-        .profile-table td {
-            color: var(--color-text-sub);
-            font-size: 0.95rem;
-        }
-
-        /* Privacy Policy */
-        .privacy-box {
-            background: #111;
-            padding: 40px;
-            border: 1px solid #222;
-            margin-top: 80px;
-            text-align: center;
-        }
-
-        .privacy-title {
-            font-family: var(--font-en);
-            font-size: 1.2rem;
-            color: var(--color-text-main);
-            margin-bottom: 20px;
-            letter-spacing: 0.1em;
-        }
-
-        .privacy-desc {
-            font-size: 0.9rem;
-            color: var(--color-text-sub);
-            line-height: 1.8;
-            margin-bottom: 30px;
-        }
-
-        /* Form */
-        .contact-form {
-            max-width: 700px;
-            margin: 0 auto;
-            background: #0f0f0f;
-            padding: 60px;
-            border: 1px solid #222;
-        }
-
-        .form-group {
-            margin-bottom: 30px;
-        }
-
-        .form-label {
-            display: block;
-            margin-bottom: 10px;
-            font-family: var(--font-jp);
-            font-size: 0.9rem;
-            color: var(--color-text-main);
-        }
-
-        .form-control,
-        .form-textarea {
-            width: 100%;
-            background: #050505;
-            border: 1px solid #333;
-            padding: 15px;
-            color: #fff;
-            font-family: var(--font-body);
-            transition: border-color 0.3s;
-        }
-
-        .form-control:focus,
-        .form-textarea:focus {
-            outline: none;
-            border-color: var(--color-accent);
-        }
-
-        .form-textarea {
-            height: 150px;
-            resize: vertical;
-        }
-
-        .form-submit {
-            text-align: center;
-            margin-top: 40px;
-        }
-
-        /* Footer */
-        footer {
-            background-color: #050505;
-            padding: 60px 5% 20px;
-            border-top: 1px solid #222;
-        }
-
-        .footer-content {
-            display: flex;
-            justify-content: space-between;
-            flex-wrap: wrap;
-            max-width: 1200px;
-            margin: 0 auto 60px;
-            gap: 40px;
-        }
-
-        .footer-logo {
-            font-family: var(--font-en);
-            font-size: 1.5rem;
-            margin-bottom: 20px;
-            color: var(--color-text-main);
-        }
-
-        .footer-info {
-            color: var(--color-text-sub);
-            line-height: 1.8;
-            font-size: 0.9rem;
-        }
-
-        .copyright {
-            text-align: center;
-            color: #444;
-            font-size: 0.75rem;
-            font-family: var(--font-en);
-            padding-top: 20px;
-            border-top: 1px solid #111;
-        }
-
-        @media (max-width: 768px) {
-            .contact-form {
-                padding: 30px;
-            }
-
-            .profile-table th,
-            .profile-table td {
-                display: block;
-                width: 100%;
-                padding: 15px 0;
-            }
-
-            .profile-table th {
-                padding-bottom: 5px;
-                border-bottom: none;
-            }
-        }
-    </style>
+    .table{
+      width:100%; border-collapse:collapse; margin-top:8px;
+      font-size:.95rem;
+    }
+    .table th,.table td{
+      border-top:1px solid rgba(255,255,255,.08);
+      padding:14px 10px; text-align:left; vertical-align:top;
+    }
+    .table th{width:180px; color:#d8d8d8; font-weight:600;}
+    footer{
+      text-align:center; padding:36px; color:#444; font-size:.8rem;
+      border-top:1px solid #111;
+    }
+    @media (max-width:768px){
+      nav{display:none;}
+      .hero{height:58vh;}
+      h1{font-size:1.9rem;}
+      .table th{width:120px;}
+    }
+  </style>
 </head>
 
 <body>
+  <header>
+    <div class="logo"><a href="./index.html" style="color:inherit;text-decoration:none;">SECURE<span>X</span></a></div>
+    <nav>
+      <a href="./service.html">SERVICES</a>
+      <a href="./company.html">COMPANY</a>
+      <a href="./index.html#contact">CONTACT</a>
+    </nav>
+  </header>
 
-    <div class="container">
-        <!-- Header -->
-        <header>
-            <a href="index.html" class="logo">SECURE<span>X</span></a>
-            <nav>
-                <ul>
-                    <li><a href="service.html">SERVICES</a></li>
-                    <li><a href="index.html#trust">TRUST</a></li>
-                    <li><a href="company.html" style="color: var(--color-accent); opacity: 1;">CONTACT</a></li>
-                </ul>
-            </nav>
-        </header>
-
-        <!-- Hero Section -->
-        <section class="hero">
-            <div class="hero-overlay"></div>
-            <div class="hero-content">
-                <h1 class="hero-title-jp">COMPANY & CONTACT</h1>
-                <div class="hero-breadcrumbs">HOME / COMPANY</div>
-            </div>
-        </section>
-
-        <!-- Company Profile -->
-        <section>
-            <h2 class="section-title">COMPANY PROFILE<span>会社概要</span></h2>
-
-            <div class="company-profile">
-                <table class="profile-table">
-                    <tr>
-                        <th>会社名</th>
-                        <td>株式会社 SECURE X （読み：セキュアエックス）</td>
-                    </tr>
-                    <tr>
-                        <th>代表取締役</th>
-                        <td>金子 賢人</td>
-                    </tr>
-                    <tr>
-                        <th>所在地</th>
-                        <td>〒106-0032 東京都港区六本木 1-2-3 ミッドタウンタワーXX階</td>
-                    </tr>
-                    <tr>
-                        <th>設立</th>
-                        <td>2026年 1月 20日</td>
-                    </tr>
-                    <tr>
-                        <th>事業内容</th>
-                        <td>
-                            要人警護（ボディーガード）業務<br>
-                            自家用自動車管理請負業務（役員車ドライバー派遣）<br>
-                            運行管理コンサルティング
-                        </td>
-                    </tr>
-                    <tr>
-                        <th>許認可</th>
-                        <td>東京都公安委員会認定 警備業 第123456号</td>
-                    </tr>
-                </table>
-
-                <div class="privacy-box">
-                    <h3 class="privacy-title">PRIVACY POLICY</h3>
-                    <p class="privacy-desc">
-                        当社は、業務上知り得た一切の情報を厳格に管理いたします。<br>
-                        顧客リスト、運行記録、車内での会話内容などが外部に漏洩することはございません。<br>
-                        ご契約時に秘密保持契約書（NDA）の締結も可能です。
-                    </p>
-                </div>
-            </div>
-        </section>
-
-        <!-- Contact Form -->
-        <section id="contact" style="background: #0a0a0a;">
-            <h2 class="section-title">CONTACT FORM<span>お問い合わせ</span></h2>
-
-            <form class="contact-form">
-                <div class="form-group">
-                    <label class="form-label">会社名 / お名前 <span style="color: #c5a059;">*</span></label>
-                    <input type="text" class="form-control" name="name" required>
-                </div>
-
-                <div class="form-group">
-                    <label class="form-label">メールアドレス <span style="color: #c5a059;">*</span></label>
-                    <input type="email" class="form-control" name="email" required>
-                </div>
-
-                <div class="form-group">
-                    <label class="form-label">電話番号</label>
-                    <input type="tel" class="form-control" name="phone">
-                </div>
-
-                <div class="form-group">
-                    <label class="form-label">お問い合わせ内容 <span style="color: #c5a059;">*</span></label>
-                    <textarea class="form-textarea" name="message" required></textarea>
-                </div>
-
-                <div class="form-submit">
-                    <button type="submit" class="gold-border-btn"
-                        style="background: var(--color-accent); color: #000; width: 100%;">SEND MESSAGE</button>
-                    <p style="margin-top: 15px; font-size: 0.8rem; color: #666;">
-                        ※ 24時間以内に担当者よりご連絡いたします。
-                    </p>
-                </div>
-            </form>
-        </section>
-
-        <!-- Footer -->
-        <footer>
-            <div class="footer-content">
-                <div class="footer-left">
-                    <div class="footer-logo">SECURE<span>X</span></div>
-                    <p class="footer-info">
-                        東京都港区〇〇 1-2-3 Minato-ku, Tokyo<br>
-                        TEL: 03-XXXX-XXXX<br>
-                        東京都公安委員会認定 第123456号
-                    </p>
-                </div>
-                <div class="footer-right">
-                    <p class="footer-info" style="text-align: right;">
-                        <a href="#" style="color: #666; text-decoration: none; margin-right: 20px;">PRIVACY POLICY</a>
-                        <a href="index.html" style="color: #666; text-decoration: none;">HOME</a>
-                    </p>
-                </div>
-            </div>
-            <div class="copyright">
-                &copy; 2026 SECURE X Inc. All Rights Reserved.
-            </div>
-        </footer>
+  <section class="hero">
+    <div class="hero-content">
+      <div class="kicker">COMPANY</div>
+      <h1>信頼を、設計する。</h1>
+      <p class="lead">
+        私たちは「移動」と「警護」を一体で設計し、<br>
+        役員・VIPの時間とプライバシーを守るための運用を提供します。
+      </p>
     </div>
-</body>
+  </section>
 
-</html>
+  <main>
+    <h2 class="section-title">OVERVIEW</h2>
+
+    <div class="card">
+      <h2>会社概要</h2>
+      <table class="table">
+        <tr><th>会社名</th><td>SECURE X Inc.（仮）</td></tr>
+        <tr><th>所在地</th><td>東京都港区〇〇 1-2-3 Minato-ku, Tokyo</td></tr>
+        <tr><th>TEL</th><td>03-XXXX-XXXX</td></tr>
+        <tr><th>事業内容</th><td>セキュリティドライバー / 身辺警護 / スポット送迎</td></tr>
+        <tr><th>認定</th><td>東京都公安委員会認定 第123456号（仮）</td></tr>
+      </table>
+    </div>
+
+    <div class="card">
+      <h2>ミッション</h2>
+      <p>
+        お客様の移動を「最高の実務空間」へ。<br>
+        そのために、守秘・安全・ホスピタリティを標準化し、再現性のある品質で提供します。
+      </p>
+    </div>
+
+    <div class="card">
+      <h2>品質と守秘</h2>
+      <p>
+        NDA（守秘義務契約）・身元保証・運用ルールを徹底し、車内での会話、立ち寄り先、同乗者など、
+        一切の情報を外部に漏らしません。
+      </p>
+    </div>
+  </main>
+
+  <footer>© 2026 SECURE X Inc. All Rights Reserved.</footer>
+</body>
+</html>    
