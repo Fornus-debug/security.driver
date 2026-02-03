@@ -19,15 +19,15 @@
       background:var(--bg);
       color:var(--text);
       font-family:var(--body);
-      padding-top:72px; /* ヘッダー分 */
+      padding-top:72px;
     }
 
-    /* ===== 共通ヘッダー（これだけ） ===== */
+    /* ===== Header ===== */
     .site-header{
       position:fixed; top:0; left:0; width:100%;
       padding:18px 6%;
       display:flex; justify-content:space-between; align-items:center;
-      background:rgba(0,0,0,.85);
+      background:rgba(0,0,0,.88);
       backdrop-filter:blur(8px);
       z-index:1000;
       border-bottom:1px solid rgba(255,255,255,.06);
@@ -48,43 +48,48 @@
       letter-spacing:.14em;
       text-decoration:none;
       color:var(--text);
-      opacity:.8;
+      opacity:.75;
       transition:.25s;
     }
-    .nav a:hover{opacity:1;color:var(--gold);}
+    .nav a:hover,
+    .nav a.active{
+      opacity:1;
+      color:var(--gold);
+    }
     @media (max-width:768px){ .nav{display:none;} }
 
-    /* ===== 本文 ===== */
+    /* ===== Hero ===== */
     .hero{
       height:62vh;
       background-image:url("./company_hero.png");
       background-size:cover;
       background-position:center;
       position:relative;
-      margin:0; /* 旧margin-topを使わない */
     }
     .hero::after{
-  content:"";
-  position:absolute;
-  inset:0;
-  background:linear-gradient(
-    rgba(0,0,0,.55),
-    rgba(0,0,0,.85)
-  );
-}
+      content:""; position:absolute; inset:0;
+      background:linear-gradient(
+        to bottom,
+        rgba(0,0,0,.75) 0%,
+        rgba(0,0,0,.45) 45%,
+        rgba(0,0,0,.35) 60%,
+        rgba(0,0,0,.85) 100%
+      );
+    }
     .hero-content{
       position:relative; z-index:1;
-      padding:70px 8% 0;
-      max-width:860px;
+      padding:70px 8% 0; max-width:860px;
     }
     .kicker{
       font-family:var(--en);
       color:var(--gold);
       letter-spacing:.28em;
       font-size:.9rem;
+      text-shadow:0 2px 12px rgba(0,0,0,.6);
     }
     h1{
       font-family:var(--jp);
+      color:#f6f6f6;
       font-size:2.4rem;
       margin:18px 0 12px;
       line-height:1.5;
@@ -98,13 +103,24 @@
       letter-spacing:.2em;
       text-align:center;
       margin-bottom:40px;
+      position:relative;
     }
+    .section-title::after{
+      content:"";
+      display:block;
+      width:60px; height:1px;
+      background:var(--gold);
+      margin:18px auto 0;
+      opacity:.7;
+    }
+
     .card{
       max-width:980px;
       margin:0 auto 28px;
       background:rgba(255,255,255,.03);
       border:1px solid rgba(255,255,255,.06);
       padding:28px 26px;
+      box-shadow:0 10px 30px rgba(0,0,0,.25);
     }
     .card h2{
       font-family:var(--jp);
@@ -113,7 +129,13 @@
       margin-bottom:12px;
     }
     .card p{color:var(--sub); line-height:2;}
-    .table{width:100%; border-collapse:collapse; margin-top:8px; font-size:.95rem;}
+
+    .table{
+      width:100%;
+      border-collapse:collapse;
+      margin-top:8px;
+      font-size:.95rem;
+    }
     .table th,.table td{
       border-top:1px solid rgba(255,255,255,.08);
       padding:14px 10px;
@@ -121,6 +143,7 @@
       vertical-align:top;
     }
     .table th{width:180px; color:#d8d8d8; font-weight:600;}
+
     footer{
       text-align:center;
       padding:36px;
@@ -150,8 +173,8 @@
       <div class="kicker">COMPANY</div>
       <h1>信頼を、設計する。</h1>
       <p class="lead">
-        私たちは「移動」と「警護」を一体で設計し、<br>
-        役員・VIPの時間とプライバシーを守るための運用を提供します。
+        守秘・安全・ホスピタリティを運用として標準化し、<br>
+        役員・VIPの時間とプライバシーを守ります。
       </p>
     </div>
   </section>
@@ -174,7 +197,7 @@
       <h2>ミッション</h2>
       <p>
         お客様の移動を「最高の実務空間」へ。<br>
-        守秘・安全・ホスピタリティを標準化し、再現性のある品質で提供します。
+        そのために、守秘・安全・ホスピタリティを再現性のある品質で提供します。
       </p>
     </div>
 
@@ -182,7 +205,7 @@
       <h2>品質と守秘</h2>
       <p>
         NDA（守秘義務契約）・身元保証・運用ルールを徹底し、
-        車内での会話、立ち寄り先、同乗者など一切の情報を外部に漏らしません。
+        車内での会話、立ち寄り先、同乗者情報など一切の情報を外部に漏らしません。
       </p>
     </div>
   </main>
