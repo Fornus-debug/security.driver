@@ -21,10 +21,7 @@
       font-family:var(--body);
       padding-top:72px;
     }
-.nav a.active{
-  color: var(--gold);
-  opacity: 1;
-}
+
     /* ===== Header ===== */
     .site-header{
       position:fixed; top:0; left:0; width:100%;
@@ -70,16 +67,14 @@
       position:relative;
     }
     .hero::after{
-  content:"";
-  position:absolute;
-  inset:0;
-  background:linear-gradient(
-    to bottom,
-    rgba(0,0,0,.75) 0%,
-    rgba(0,0,0,.45) 45%,
-    rgba(0,0,0,.35) 60%,
-    rgba(0,0,0,.85) 100%
-  );
+      content:""; position:absolute; inset:0;
+      background:linear-gradient(
+        to bottom,
+        rgba(0,0,0,.75) 0%,
+        rgba(0,0,0,.45) 45%,
+        rgba(0,0,0,.35) 60%,
+        rgba(0,0,0,.85) 100%
+      );
     }
     .hero-content{
       position:relative; z-index:1;
@@ -92,9 +87,11 @@
       letter-spacing:.3em;
       font-size:.9rem;
       margin-bottom:18px;
+      text-shadow:0 2px 12px rgba(0,0,0,.6);
     }
     .hero h1{
       font-family:var(--jp);
+      color:#f6f6f6;
       font-size:3rem;
       line-height:1.6;
       margin-bottom:22px;
@@ -196,7 +193,6 @@
       .hero h1{font-size:2.2rem;}
     }
 
-    /* ===== Footer / CTA ===== */
     footer{
       text-align:center;
       padding:70px 8% 40px;
@@ -219,17 +215,14 @@
 
   <section class="hero">
     <div class="hero-content">
-<div class="hero-kicker">SECURITY & CHAUFFEUR</div>
-      <h1>
-  静寂と安全を、<br>
-  移動空間に。
-</h1>
-<p>
-  役員・VIP向けに特化した<br>
-  セキュリティドライバーサービス。<br>
-  移動中の時間と情報を、<br>
-  確実に守ります。
-</p>
+      <div class="hero-kicker">SECURITY & CHAUFFEUR</div>
+      <h1>静寂と安全を、<br>移動空間に。</h1>
+      <p>
+        役員・VIP向けに特化した<br>
+        セキュリティドライバーサービス。<br>
+        移動中の時間と情報を、<br>
+        確実に守ります。
+      </p>
       <a class="btn" href="./service.html">VIEW SERVICES</a>
     </div>
   </section>
@@ -263,7 +256,7 @@
         <div class="pf-item">
           <div class="pf-key">URL</div>
           <div class="pf-val">
-            <a class="pf-link" href="https://fornus-debug.github.io/security.driver/" target="_blank">
+            <a class="pf-link" href="https://fornus-debug.github.io/security.driver/" target="_blank" rel="noopener">
               https://fornus-debug.github.io/security.driver/
             </a>
           </div>
@@ -278,7 +271,7 @@
   </section>
 
   <footer id="contact">
-    © 2026 fornus. Fujiwara.
+    © 2026 SECURE X Inc. All Rights Reserved.
   </footer>
 </body>
 </html>
